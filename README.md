@@ -35,3 +35,7 @@ pip install django
 
 * Crearemos el entorno de django, en este caso, core
 django-admin startproject core .
+
+* A continuación crearemos la aplicación
+django-admin startapp byteclass
+
