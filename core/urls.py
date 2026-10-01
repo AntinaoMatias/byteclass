@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from byteclass import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.bienvenida, name='bienvenida'),
+    path('404/', views.error_404, name='error_404'),
 ]

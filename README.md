@@ -64,3 +64,63 @@ INSTALLED_APPS = [
 |-core
 |-...
 
+3. En el archivo ./byteclass/views.py crearemos la función que llevará a nuestros html
+
+def bienvenida(request):
+    return render(request, 'index.html')
+
+def error_404(request, exception):
+    return render(request, 'byteclass/404.html', status=404)
+
+4. Importamos las vistas a ./core/urls.py y llamamos al método que las va a renderizar (path)
+
+from byteclass import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.bienvenida, name='bienvenida'),
+    path('404/', views.error_404, name='error_404'),
+]
+
+5. Para que nuestra págian de error funcione correctamente y no dé información sensible a los usuarios, deshabilitaremos el modo debug y autorizaremos localhost y 127.0.0.1 en settings.py
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
+
+* Para el modelado de datos realizaremos los siguientes ajustes
+
+1. Crear tablas django en la base de datos:
+python manage.py migrate
+
+2. Crear una nueva migración, que será la nuestra:
+python manage.py makemigrations
+
+3. Aplicamos la migración a la base de datos:
+python manage.py migrate
+
+Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo anuestro modelo.
+
+* Estructura de una clase:
+class MiModelo(models.Model):
+    atributo_1 = models.CharField(max_length=25,null=false)
+    atributo_2 = models.TextField(max_length=100,null=false)
+    atributo_3 = models.DateField(null=false)
+    atributo_4 = models.TimeField(null=false)
+    atributo_5 = models.DateTimeField(max_length=100,null=false)
+    atributo_6 = models.IntegerField()
+    atributo_7 = models.DecimalField()
+    atributo_8 = models.FloatField()
+    atributo_9 = models.EmailField()
+    atributo_10 = models.BooleanField(default=true)
+    atributo_11 = models.URLField(default=true)
+    created_at = models.DateTimeField(default=ahora)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class MiModelo2(models.Model):
+    atributo_referenciado = models.ForeignKey(MiModelo,on_delete=CASCADE)
+    atributo_2 = models.CharField(max_length=100)
+    created_at = models.DateTimeField(default=ahora)
+    updated_at = models.DateTimeField(auto_now=True)
+
+* 
