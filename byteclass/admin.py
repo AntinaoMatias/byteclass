@@ -2,25 +2,27 @@ from django.contrib import admin
 
 import byteclass
 
-from byteclass.models import Usuario
-from byteclass.models import Curso
-from byteclass.models import HistorialConexion
-from byteclass.models import Curso
-from byteclass.models import Seccion
-from byteclass.models import Leccion
-from byteclass.models import Evaluacion
-from byteclass.models import Pregunta
-from byteclass.models import Opcion
-from byteclass.models import Matricula
-from byteclass.models import ProgresoLeccion
-from byteclass.models import EntregaEvaluacion
-from byteclass.models import RespuestaEstudiante
-from byteclass.models import RegistroAuditoria
-from byteclass.models import Notificacion
+from .models import Usuario
+from .models import Curso
+from .models import HistorialConexion
+from .models import Curso
+from .models import Seccion
+from .models import Leccion
+from .models import Evaluacion
+from .models import Pregunta
+from .models import Opcion
+from .models import Matricula
+from .models import ProgresoLeccion
+from .models import EntregaEvaluacion
+from .models import RespuestaEstudiante
+from .models import RegistroAuditoria
+from .models import Notificacion
 
 
 
 # Register your models here.
+
+from rest_framework import serializers
 
 admin.site.register(Usuario)
 admin.site.register(Curso)

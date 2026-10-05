@@ -1,0 +1,142 @@
+[
+  {
+    "model": "byteclass.curso",
+    "pk": 1,
+    "fields": {
+      "id_instructor": 1,
+      "codigo": "INF-101",
+      "periodo": "2026-P1",
+      "titulo": "Programación Backend en Python",
+      "descripcion": "Curso introductorio al desarrollo web con Django y bases de datos relacionales.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-09",
+      "fecha_fin": "2026-07-10"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 2,
+    "fields": {
+      "id_instructor": 1,
+      "codigo": "INF-102",
+      "periodo": "2026-P1",
+      "titulo": "Modelado y Consultas en MariaDB y MySQL",
+      "descripcion": "Diseño relacional, normalización (1FN a 3FN), consultas SQL complejas con JOINs, subqueries, índices y transacciones ACID.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-10",
+      "fecha_fin": "2026-07-14"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 3,
+    "fields": {
+      "id_instructor": 2,
+      "codigo": "INF-103",
+      "periodo": "2026-P1",
+      "titulo": "JavaScript Moderno y Programación Asíncrona",
+      "descripcion": "Estándares ECMAScript, manejo de promesas, async/await, manipulación avanzada del DOM, eventos y consumo de servicios REST.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-11",
+      "fecha_fin": "2026-07-15"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 4,
+    "fields": {
+      "id_instructor": 2,
+      "codigo": "INF-104",
+      "periodo": "2026-P1",
+      "titulo": "Desarrollo Frontend Tipado con TypeScript",
+      "descripcion": "Tipado estático, interfaces, generics, configuración de tsconfig, decoradores y patrones de integración con frameworks modernos.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-12",
+      "fecha_fin": "2026-07-16"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 5,
+    "fields": {
+      "id_instructor": 1,
+      "codigo": "INF-201",
+      "periodo": "2026-P1",
+      "titulo": "Programación Orientada a Objetos en Java",
+      "descripcion": "Clases, herencia, polimorfismo, interfaces, colecciones genéricas, manejo de excepciones y principios SOLID aplicados al código.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-13",
+      "fecha_fin": "2026-07-17"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 6,
+    "fields": {
+      "id_instructor": 1,
+      "codigo": "INF-202",
+      "periodo": "2026-P2",
+      "titulo": "Administración y Optimización en PostgreSQL",
+      "descripcion": "Procedimientos almacenados PL/pgSQL, triggers, particionamiento de tablas, análisis de planes de ejecución con EXPLAIN y soporte JSONB.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-03",
+      "fecha_fin": "2026-12-15"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 7,
+    "fields": {
+      "id_instructor": 2,
+      "codigo": "INF-203",
+      "periodo": "2026-P2",
+      "titulo": "Bases de Datos NoSQL con MongoDB y Redis",
+      "descripcion": "Modelado de datos documental, operadores de agregación, indexación en colecciones no estructuradas y patrones de almacenamiento en caché en memoria.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-04",
+      "fecha_fin": "2026-12-16"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 8,
+    "fields": {
+      "id_instructor": 1,
+      "codigo": "INF-301",
+      "periodo": "2026-P2",
+      "titulo": "Programación de Sistemas con Lenguaje C y C++",
+      "descripcion": "Gestión de memoria dinámica, punteros, structs, compilación modular con GCC/Make y diseño de estructuras de datos fundamentales.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-05",
+      "fecha_fin": "2026-12-18"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 9,
+    "fields": {
+      "id_instructor": 2,
+      "codigo": "INF-302",
+      "periodo": "2026-P2",
+      "titulo": "Desarrollo de Servicios Concurrentes con Go (Golang)",
+      "descripcion": "Sintaxis de Go, tipos de datos, goroutines, canales para sincronización concurrente, interfaces implícitas y creación de microservicios HTTP.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-06",
+      "fecha_fin": "2026-12-21"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 10,
+    "fields": {
+      "id_instructor": 1,
+      "codigo": "INF-303",
+      "periodo": "2026-P2",
+      "titulo": "Desarrollo de Aplicaciones Empresariales con C# y .NET",
+      "descripcion": "Sintaxis moderna de C#, consultas con LINQ, mapeo relacional con Entity Framework Core y buenas prácticas para Web APIs.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-07",
+      "fecha_fin": "2026-12-22"
+    }
+  }
+]

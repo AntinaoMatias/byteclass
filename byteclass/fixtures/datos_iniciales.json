@@ -32,19 +32,5 @@
       "created_at": "2026-10-01 12:00:00",
       "updated_at": "2026-10-01 12:00:00"
     }
-  },
-  {
-    "model": "byteclass.curso",
-    "pk": 1,
-    "fields": {
-      "id_instructor": 1,
-      "codigo": "INF-101",
-      "periodo": "2026-P2",
-      "titulo": "Programación Backend en Python",
-      "descripcion": "Curso introductorio al desarrollo web con Django y bases de datos.",
-      "estado": "PUBLICADO",
-      "fecha_inicio": "2026-10-01",
-      "fecha_fin": "2026-12-15"
-    }
   }
 ]
