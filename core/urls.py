@@ -18,9 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from byteclass import views
 
+"""
+Se configuró, adicionalmente, la ruta para /api/
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.bienvenida),
     path('404/', views.error_404),
     path('byteclass/', include('byteclass.urls')),
+    path('api/', include('byteclass.urls')),
 ]
