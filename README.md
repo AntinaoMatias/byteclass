@@ -1,126 +1,112 @@
 # byteclass
-Repositorio para el desarrollo de plataforma de cursos online como proyecto para la materia programación backend
 
-Este archivo readme contiene las instrucciones para la creación de este proyecto sin omitir ni un solo paso.
+Plataforma de cursos online desarrollada con Django y Django REST Framework para la asignatura de Programación Backend. El proyecto expone una API REST para gestionar el modelo de datos completo mediante operaciones CRUD.
 
-## Creación del ambiente virtual
+---
 
-* Abrimos la terminal de vscode y ejecutamos el siguiente comando
+## Requisitos
+
+- Python 3
+- Servidor MariaDB o MySQL
+- Git
+
+---
+
+## Puesta en marcha
+
+### 1. Clonar el repositorio y crear el entorno
+
+Descarga el proyecto y entra a la carpeta:
+
+git clone https://github.com/AntinaoMatias/byteclass.git
+cd byteclass
+
+Crea el ambiente virtual:
 
 python -m venv ambiente
 
-* Luego, activamos el ambiente virtual
+Actívalo según tu sistema:
 
-- En windows:
-cd nombre_ambiente\Scripts
-.\Activate
+- En Linux:
+source ambiente/bin/activate
 
-* De no funcionar, ejecutamos
-Set-ExecutionPolicy Bypass -Scope CurrentUser
+- En Linux con fish:
+source ambiente/bin/activate.fish
 
-* Luego volvemos a la carpeta raíz
-cd ..
+- En Windows:
+ambiente\Scripts\activate
 
-- En linux:
-source ./ambiente/bin/activate.fish
+### 2. Instalar dependencias
 
-* Para desactivar el ambiente virtual:
-deactivate
+Con el entorno encendido, instala los paquetes del proyecto:
 
-* Ahora, actualizaremos pip:
-python -m pip install --upgrade pip
+pip install -r requirements.txt
 
-* Una vez actualizado, instalaremos django:
-pip install django
+### 3. Variables de entorno
 
-* Crearemos el entorno de django, en este caso, core
-django-admin startproject core .
+Crea un archivo llamado .env en la raíz del proyecto para definir la clave secreta y la conexión a la base de datos sin dejar datos privados en el código
 
-* A continuación crearemos la aplicación
-django-admin startapp byteclass
+Archivo .env adjunto en documento aparte para la entrega de la evaluación
 
-* Iniciamos el servidor
+Recuerda que este archivo debe quedarse fuera de los commits en git.
+
+### 4. Base de datos
+
+Antes de correr el servidor, crea la base de datos en MariaDB o MySQL con su usuario y permisos:
+
+Archivo .sql adjunto en documento aparte para la entrega de la evaluación
+
+### 5. Migraciones
+
+Aplica las migraciones para generar las tablas en el motor:
+
+python manage.py migrate
+
+### 6. Iniciar el proyecto
+
+Corre el servidor de desarrollo:
+
 python manage.py runserver
 
-* Ingresamos al local host desde la siugiente ip 
-http://127.0.0.1:8000
+Puedes ingresar desde el navegador en:
 
-* Una vez comprobado que el servidor funciona, realizaremos los siguientes ajustes iniciales
+- Panel de administración: http://127.0.0.1:8000/admin/
 
-1. Agregaremos nuestra app a INSTALLED_APPS en ./core/settings.py
-INSTALLED_APPS = [
-    # apps de django
-    'byteclass',
-]
-2. Dentro del directorio de nuestra app crearemos una carpeta llamada templates donde crearemos nuestro 404.html para el manejo de errores y una carpeta con el mismo nombre que la app, donde meteremos todas nuestras "plantillas", quedando tal que así
+---
 
-|-ambiente
-|-byteclass
-|   |-templates
-|   |   |- byteclass
-|   |   |   |- index.html (pantalla principal)
-|   |   |
-|   |   |- 404.html
-|-core
-|-...
+## Estructura del proyecto
 
-3. En el archivo ./byteclass/views.py crearemos la función que llevará a nuestros html
-
-def bienvenida(request):
-    return render(request, 'index.html')
-
-def error_404(request, exception):
-    return render(request, 'byteclass/404.html', status=404)
-
-4. Importamos las vistas a ./core/urls.py y llamamos al método que las va a renderizar (path)
-
-from byteclass import views
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.bienvenida, name='bienvenida'),
-    path('404/', views.error_404, name='error_404'),
-]
-
-5. Para que nuestra págian de error funcione correctamente y no dé información sensible a los usuarios, deshabilitaremos el modo debug y autorizaremos localhost y 127.0.0.1 en settings.py
-
-DEBUG = False
-
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
-
-* Para el modelado de datos realizaremos los siguientes ajustes
-
-1. Crear tablas django en la base de datos:
-python manage.py migrate
-
-2. Crear una nueva migración, que será la nuestra:
-python manage.py makemigrations
-
-3. Aplicamos la migración a la base de datos:
-python manage.py migrate
-
-Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo anuestro modelo.
-
-* Estructura de una clase:
-class MiModelo(models.Model):
-    atributo_1 = models.CharField(max_length=25,null=false)
-    atributo_2 = models.TextField(max_length=100,null=false)
-    atributo_3 = models.DateField(null=false)
-    atributo_4 = models.TimeField(null=false)
-    atributo_5 = models.DateTimeField(max_length=100,null=false)
-    atributo_6 = models.IntegerField()
-    atributo_7 = models.DecimalField()
-    atributo_8 = models.FloatField()
-    atributo_9 = models.EmailField()
-    atributo_10 = models.BooleanField(default=true)
-    atributo_11 = models.URLField(default=true)
-    created_at = models.DateTimeField(default=ahora)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class MiModelo2(models.Model):
-    atributo_referenciado = models.ForeignKey(MiModelo,on_delete=CASCADE)
-    atributo_2 = models.CharField(max_length=100)
-    created_at = models.DateTimeField(default=ahora)
-    updated_at = models.DateTimeField(auto_now=True)
-
-* 
+```text
+byteclass/
+├── ambiente/               # Entorno virtual
+├── byteclass/              # Aplicación principal
+│   ├── fixtures/           # Datos iniciales y de prueba
+│   ├── migrations/         # Archivos de migración de base de datos
+│   │   ├── __init__.py
+│   │   └── 0001_initial.py
+│   ├── templates/          # Plantillas HTML
+│   │   └── byteclass/
+│   │       ├── 404.html
+│   │       └── index.html
+│   ├── __init__.py
+│   ├── admin.py            # Registro de modelos en el panel admin
+│   ├── apps.py
+│   ├── models.py           # Definición de modelos de datos
+│   ├── serializer.py       # Serializadores para Django REST Framework
+│   ├── tests.py
+│   ├── urls.py             # Enrutamiento y registro de routers de la app
+│   └── views.py            # ModelViewSets y controladores
+├── core/                   # Módulo de configuración principal
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py         # Configuración del proyecto y conexión a .env
+│   ├── urls.py             # Enrutador general del proyecto
+│   └── wsgi.py
+├── lecciones_archivos/     # Almacenamiento de archivos y recursos de lecciones
+├── .env                    # Variables de entorno (ignorado en git)
+├── .gitignore              # Archivos y carpetas excluidos del repositorio
+├── db.sqlite3              # Base de datos local de desarrollo
+├── manage.py               # Comando de gestión de Django
+├── README.md               # Documentación general del proyecto
+└── requirements.txt        # Dependencias y librerías instaladas
+```
