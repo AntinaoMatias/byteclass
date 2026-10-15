@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Cursos - byteclass</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: #0b0f19; color: #f8fafc; min-height: 100vh; }
+        nav { background-color: #111827; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; }
+        .logo { font-size: 1.35rem; font-weight: 800; color: #38bdf8; text-decoration: none; }
+        .user-nav { display: flex; gap: 1.2rem; align-items: center; }
+        .user-badge { color: #94a3b8; font-size: 0.9rem; }
+        .btn-logout { background-color: #374151; color: #fff; text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.85rem; }
+        .btn-logout:hover { background-color: #4b5563; }
+        
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
+        .header { margin-bottom: 2.5rem; }
+        .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .header p { color: #94a3b8; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background-color: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-code { color: #38bdf8; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem; }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.8rem; color: #fff; }
+        .card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem; flex: 1; }
+        .btn-entrar { background-color: #2563eb; color: #fff; text-align: center; text-decoration: none; padding: 0.6rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 500; }
+        .btn-entrar:hover { background-color: #1d4ed8; }
+        .empty { color: #64748b; text-align: center; padding: 3rem; grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">byteclass</a>
+        <div class="user-nav">
+            <span class="user-badge">Conectado como: <strong>{{ request.user.username }}</strong></span>
+            <a href="/api/" class="user-badge" style="text-decoration:none; color:#38bdf8;">Ver API</a>
+            <a href="{% url 'logout' %}" class="btn-logout">Salir</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Mis Cursos</h1>
+            <p>Selecciona un curso para continuar con tus lecciones pendientes.</p>
+        </div>
+
+        <div class="grid">
+            {% for curso in cursos %}
+                <div class="card">
+                    <div>
+                        <div class="card-code">{{ curso.codigo }} • {{ curso.periodo }}</div>
+                        <h3>{{ curso.titulo }}</h3>
+                        <p>{{ curso.descripcion }}</p>
+                    </div>
+                    <a href="/api/Curso/{{ curso.id }}/" class="btn-entrar">Ver Detalle</a>
+                </div>
+            {% empty %}
+                <div class="empty">
+                    <p>No hay cursos registrados en la base de datos todavía.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

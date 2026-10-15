@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from django.contrib.auth.decorators import login_required
+from rest_framework.authentication import SessionAuthentication
 
 from .models import Usuario
 from .models import Curso
@@ -97,3 +99,11 @@ def bienvenida(request):
 
 def error_404(request, exception):
     return render(request, 'byteclass/404.html', status=404)
+
+def registro(request):
+    return render(request, 'byteclass/login.html')
+
+@login_required
+def dashboard(request):
+    cursos = Curso.objects.all()
+    return render(request, 'byteclass/dashboard.html', {'cursos': cursos})

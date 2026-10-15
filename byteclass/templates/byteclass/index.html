@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>byteclass - Plataforma de Cursos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: #0b0f19; color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; }
+        nav { background-color: #111827; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; }
+        .logo { font-size: 1.35rem; font-weight: 800; color: #38bdf8; text-decoration: none; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; list-style: none; }
+        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #f8fafc; }
+        .btn-nav { background-color: #2563eb; color: #fff !important; padding: 0.5rem 1.1rem; border-radius: 6px; }
+        .btn-nav:hover { background-color: #1d4ed8; }
+        
+        main { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+        .hero { max-width: 650px; }
+        .tag { display: inline-block; background-color: #1e293b; color: #38bdf8; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.8rem; border-radius: 999px; margin-bottom: 1.2rem; border: 1px solid #334155; }
+        h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; }
+        p { font-size: 1.15rem; color: #94a3b8; line-height: 1.6; margin-bottom: 2.2rem; }
+        .btn-comenzar { display: inline-block; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; font-size: 1.05rem; font-weight: 600; text-decoration: none; padding: 0.95rem 2.4rem; border-radius: 8px; transition: transform 0.15s, box-shadow 0.15s; }
+        .btn-comenzar:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4); }
+    </style>
 </head>
 <body>
-    Bienvenido a Byteclass
+
+    <nav>
+        <a href="/" class="logo">byteclass</a>
+        <ul class="nav-links">
+            <li><a href="/api/">API REST</a></li>
+            <li><a href="/admin/">Admin</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="/dashboard/">Mis Cursos</a></li>
+                <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+            {% else %}
+                <li><a href="/dashboard/" class="btn-nav">Ingresar</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <span class="tag">Backend Django & DRF</span>
+            <h1>Aprende a tu ritmo con byteclass</h1>
+            <p>Accede a tus lecciones, revisa tus evaluaciones y sigue el progreso de tus cursos en una sola plataforma.</p>
+            <a href="/dashboard/" class="btn-comenzar">Comenzar ahora</a>
+        </div>
+    </main>
+
 </body>
 </html>

@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from byteclass import views
+from django.contrib.auth import views as auth_views
 
 """
 Se configuró, adicionalmente, la ruta para /api/
@@ -27,4 +28,10 @@ urlpatterns = [
     path('404/', views.error_404),
     path('byteclass/', include('byteclass.urls')),
     path('api/', include('byteclass.urls')),
+
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('registro/', views.registro, name='registro'),
+    path('dashboard/', views.dashboard, name='dashboard'),
 ]
