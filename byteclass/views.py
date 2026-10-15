@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from rest_framework import viewsets
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from django.shortcuts import render, get_object_or_404
+
+from rest_framework import viewsets
 from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Usuario
 from .models import Curso
@@ -36,58 +41,99 @@ from .serializer import NotificacionSerializer
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class CursoViewSet(viewsets.ModelViewSet):
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class HistorialConexionViewSet(viewsets.ModelViewSet):
     queryset = HistorialConexion.objects.all()
     serializer_class = HistorialConexionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class SeccionViewSet(viewsets.ModelViewSet):
     queryset = Seccion.objects.all()
     serializer_class = SeccionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class LeccionViewSet(viewsets.ModelViewSet):
     queryset = Leccion.objects.all()
     serializer_class = LeccionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class EvaluacionViewSet(viewsets.ModelViewSet):
     queryset = Evaluacion.objects.all()
     serializer_class = EvaluacionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class PreguntaViewSet(viewsets.ModelViewSet):
     queryset = Pregunta.objects.all()
     serializer_class = PreguntaSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class OpcionViewSet(viewsets.ModelViewSet):
     queryset = Opcion.objects.all()
     serializer_class = OpcionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class MatriculaViewSet(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class ProgresoLeccionViewSet(viewsets.ModelViewSet):
     queryset = ProgresoLeccion.objects.all()
     serializer_class = ProgresoLeccionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class EntregaEvaluacionViewSet(viewsets.ModelViewSet):
     queryset = EntregaEvaluacion.objects.all()
     serializer_class = EntregaEvaluacionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class RespuestaEstudianteViewSet(viewsets.ModelViewSet):
     queryset = RespuestaEstudiante.objects.all()
     serializer_class = RespuestaEstudianteSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class RegistroAuditoriaViewSet(viewsets.ModelViewSet):
     queryset = RegistroAuditoria.objects.all()
     serializer_class = RegistroAuditoriaSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 class NotificacionViewSet(viewsets.ModelViewSet):
     queryset = Notificacion.objects.all()
     serializer_class = NotificacionSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 
@@ -107,3 +153,12 @@ def registro(request):
 def dashboard(request):
     cursos = Curso.objects.all()
     return render(request, 'byteclass/dashboard.html', {'cursos': cursos})
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('/')
+
+@login_required
+def detalle_curso(request, curso_id):
+    curso = get_object_or_404(Curso, id=curso_id)
+    return render(request, 'byteclass/detalle_curso.html', {'curso': curso})
