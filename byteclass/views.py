@@ -5,40 +5,15 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from rest_framework import viewsets
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Usuario
-from .models import Curso
-from .models import HistorialConexion
-from .models import Seccion
-from .models import Leccion
-from .models import Evaluacion
-from .models import Pregunta
-from .models import Opcion
-from .models import Matricula
-from .models import ProgresoLeccion
-from .models import EntregaEvaluacion
-from .models import RespuestaEstudiante
-from .models import RegistroAuditoria
-from .models import Notificacion
-
-from .serializer import UsuarioSerializer
-from .serializer import CursoSerializer
-from .serializer import HistorialConexionSerializer
-from .serializer import SeccionSerializer
-from .serializer import LeccionSerializer
-from .serializer import EvaluacionSerializer
-from .serializer import PreguntaSerializer
-from .serializer import OpcionSerializer
-from .serializer import MatriculaSerializer
-from .serializer import ProgresoLeccionSerializer
-from .serializer import EntregaEvaluacionSerializer
-from .serializer import RespuestaEstudianteSerializer
-from .serializer import RegistroAuditoriaSerializer
-from .serializer import NotificacionSerializer
+from .models import Curso, EntregaEvaluacion, Evaluacion, HistorialConexion, Leccion, Matricula, Notificacion, Opcion, Pregunta, ProgresoLeccion, RegistroAuditoria, RespuestaEstudiante, Seccion, Usuario
+from .serializer import CursoSerializer, EntregaEvaluacionSerializer, EvaluacionSerializer, HistorialConexionSerializer, LeccionSerializer, MatriculaSerializer, NotificacionSerializer, OpcionSerializer, PreguntaSerializer, ProgresoLeccionSerializer, RegistroAuditoriaSerializer, RespuestaEstudianteSerializer, SeccionSerializer, UsuarioSerializer
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
@@ -177,11 +152,10 @@ def pagina_inicio(request):
 
 def logout_view(request):
     logout(request)
-    # En este caso, decidí que vaya a la página de bienvenida
-    return redirect('bienvenida') 
+    return redirect('inicio')
 
-@login_required
-def detalle_curso(request, curso_id):
-    curso = get_object_or_404(Curso, id=curso_id)
-    return render(request, 'byteclass/detalle_curso.html', {'curso': curso})
-
+class CursoDetalleView(LoginRequiredMixin, DetailView):
+    model = Curso
+    template_name = 'byteclass/detalle_curso.html'
+    context_object_name = 'curso'
+    pk_url_kwarg = 'curso_id'

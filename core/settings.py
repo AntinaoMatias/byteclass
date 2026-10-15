@@ -16,8 +16,9 @@ from pathlib import Path
 
 # Autenticación y redirección de usuarios
 
-LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/pagina_inicio/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'pagina_inicio'
+LOGOUT_REDIRECT_URL = 'inicio'
 
 # SESSION expira después de 1 hora
 SESSION_COOKIE_AGE = 3600
