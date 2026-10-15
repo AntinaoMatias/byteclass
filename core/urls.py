@@ -23,16 +23,15 @@ from django.contrib.auth import views as auth_views
 Se configuró, adicionalmente, la ruta para /api/
 """
 urlpatterns = [
-path('admin/', admin.site.urls),
-    path('', views.bienvenida, name='bienvenida'),
-    path('404/', views.error_404, name='error_404'),
+    path('admin/', admin.site.urls),
+    path('', views.bienvenida, name='inicio'),
     path('byteclass/', include('byteclass.urls')),
     path('api/', include('byteclass.urls')),
-
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('registro/', views.registro, name='registro'),    
+    path('autenticacion/', include('django.contrib.auth.urls')),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('registro/', views.registro, name='registro'),
     path('pagina_inicio/', views.pagina_inicio, name='pagina_inicio'),
     path('curso/<int:curso_id>/', views.detalle_curso, name='detalle_curso'),
+    path('404/', views.error_404, name='error_404'),
 ]

@@ -19,6 +19,15 @@ from pathlib import Path
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/pagina_inicio/'
 
+# SESSION expira después de 1 hora
+SESSION_COOKIE_AGE = 3600
+
+# SESSION expira al cerrar el navegador
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
+
+# Usamos la DB para SESSION
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

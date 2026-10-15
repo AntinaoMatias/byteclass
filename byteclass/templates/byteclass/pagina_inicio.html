@@ -70,6 +70,24 @@
             padding: 0 1.5rem;
         }
 
+        .session-banner {
+            background-color: rgba(14, 165, 233, 0.12);
+            border: 1px solid #0284c7;
+            color: #bae6fd;
+            padding: 0.9rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .session-banner strong {
+            color: #38bdf8;
+        }
+
         .header {
             margin-bottom: 2.5rem;
         }
@@ -168,6 +186,12 @@
     </nav>
 
     <div class="container">
+        {% if message %}
+        <div class="session-banner">
+            <div><strong>Mensaje bienvenida:</strong> {{ message }}</div>
+        </div>
+        {% endif %}
+
         <div class="header">
             <h1>Mis Cursos</h1>
             <p>Selecciona un curso para continuar con tus lecciones pendientes.</p>

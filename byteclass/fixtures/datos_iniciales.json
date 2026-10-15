@@ -12,8 +12,8 @@
       "contrasenia": "pbkdf2_sha256$testpass123",
       "habilitado": true,
       "rol_principal": "INSTRUCTOR",
-      "created_at": "2026-10-01 12:00:00",
-      "updated_at": "2026-10-01 12:00:00"
+      "created_at": "2026-10-01T15:00:00Z",
+      "updated_at": "2026-10-01T15:00:00Z"
     }
   },
   {
@@ -29,8 +29,480 @@
       "contrasenia": "pbkdf2_sha256$testpass123",
       "habilitado": true,
       "rol_principal": "ESTUDIANTE",
-      "created_at": "2026-10-01 12:00:00",
-      "updated_at": "2026-10-01 12:00:00"
+      "created_at": "2026-10-01T15:00:00Z",
+      "updated_at": "2026-10-01T15:00:00Z"
+    }
+  },
+  {
+    "model": "byteclass.usuario",
+    "pk": 3,
+    "fields": {
+      "nombre": "Pablo",
+      "apellido": "Gomez",
+      "rut": "",
+      "username": "pablitogomez",
+      "correo_institucional": "pablogomez@institucional.cl",
+      "telefono": null,
+      "contrasenia": "",
+      "habilitado": true,
+      "rol_principal": "INSTRUCTOR",
+      "created_at": "2026-10-02T00:46:04.130Z",
+      "updated_at": "2026-10-02T00:46:04.130Z"
+    }
+  },
+  {
+    "model": "byteclass.usuario",
+    "pk": 4,
+    "fields": {
+      "nombre": "Renato",
+      "apellido": "Alvarez",
+      "rut": "12.345.678-9",
+      "username": "ralvarez",
+      "correo_institucional": "ralvarez@byteclass.cl",
+      "telefono": "+56912345678",
+      "contrasenia": "password123",
+      "habilitado": true,
+      "rol_principal": "ESTUDIANTE",
+      "created_at": "2026-10-05T05:41:27.158Z",
+      "updated_at": "2026-10-05T05:41:27.158Z"
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 1,
+    "fields": {
+      "codigo": "INF-101",
+      "periodo": "2026-P1",
+      "titulo": "Programación Backend en Python",
+      "descripcion": "Curso introductorio al desarrollo web con Django y bases de datos relacionales.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-09",
+      "fecha_fin": "2026-07-10",
+      "id_instructor": 1
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 2,
+    "fields": {
+      "codigo": "INF-102",
+      "periodo": "2026-P1",
+      "titulo": "Modelado y Consultas en MariaDB y MySQL",
+      "descripcion": "Diseño relacional, normalización (1FN a 3FN), consultas SQL complejas con JOINs, subqueries, índices y transacciones ACID.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-10",
+      "fecha_fin": "2026-07-14",
+      "id_instructor": 1
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 3,
+    "fields": {
+      "codigo": "INF-103",
+      "periodo": "2026-P1",
+      "titulo": "JavaScript Moderno y Programación Asíncrona",
+      "descripcion": "Estándares ECMAScript, manejo de promesas, async/await, manipulación avanzada del DOM, eventos y consumo de servicios REST.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-11",
+      "fecha_fin": "2026-07-15",
+      "id_instructor": 2
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 4,
+    "fields": {
+      "codigo": "INF-104",
+      "periodo": "2026-P1",
+      "titulo": "Desarrollo Frontend Tipado con TypeScript",
+      "descripcion": "Tipado estático, interfaces, generics, configuración de tsconfig, decoradores y patrones de integración con frameworks modernos.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-12",
+      "fecha_fin": "2026-07-16",
+      "id_instructor": 2
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 5,
+    "fields": {
+      "codigo": "INF-201",
+      "periodo": "2026-P1",
+      "titulo": "Programación Orientada a Objetos en Java",
+      "descripcion": "Clases, herencia, polimorfismo, interfaces, colecciones genéricas, manejo de excepciones y principios SOLID aplicados al código.",
+      "estado": "FINALIZADO",
+      "fecha_inicio": "2026-03-13",
+      "fecha_fin": "2026-07-17",
+      "id_instructor": 1
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 6,
+    "fields": {
+      "codigo": "INF-202",
+      "periodo": "2026-P2",
+      "titulo": "Administración y Optimización en PostgreSQL",
+      "descripcion": "Procedimientos almacenados PL/pgSQL, triggers, particionamiento de tablas, análisis de planes de ejecución con EXPLAIN y soporte JSONB.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-03",
+      "fecha_fin": "2026-12-15",
+      "id_instructor": 1
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 7,
+    "fields": {
+      "codigo": "INF-203",
+      "periodo": "2026-P2",
+      "titulo": "Bases de Datos NoSQL con MongoDB y Redis",
+      "descripcion": "Modelado de datos documental, operadores de agregación, indexación en colecciones no estructuradas y patrones de almacenamiento en caché en memoria.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-04",
+      "fecha_fin": "2026-12-16",
+      "id_instructor": 2
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 8,
+    "fields": {
+      "codigo": "INF-301",
+      "periodo": "2026-P2",
+      "titulo": "Programación de Sistemas con Lenguaje C y C++",
+      "descripcion": "Gestión de memoria dinámica, punteros, structs, compilación modular con GCC/Make y diseño de estructuras de datos fundamentales.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-05",
+      "fecha_fin": "2026-12-18",
+      "id_instructor": 1
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 9,
+    "fields": {
+      "codigo": "INF-302",
+      "periodo": "2026-P2",
+      "titulo": "Desarrollo de Servicios Concurrentes con Go (Golang)",
+      "descripcion": "Sintaxis de Go, tipos de datos, goroutines, canales para sincronización concurrente, interfaces implícitas y creación de microservicios HTTP.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-06",
+      "fecha_fin": "2026-12-21",
+      "id_instructor": 2
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 10,
+    "fields": {
+      "codigo": "INF-303",
+      "periodo": "2026-P2",
+      "titulo": "Desarrollo de Aplicaciones Empresariales con C# y .NET",
+      "descripcion": "Sintaxis moderna de C#, consultas con LINQ, mapeo relacional con Entity Framework Core y buenas prácticas para Web APIs.",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-08-07",
+      "fecha_fin": "2026-12-22",
+      "id_instructor": 1
+    }
+  },
+  {
+    "model": "byteclass.curso",
+    "pk": 11,
+    "fields": {
+      "codigo": "test",
+      "periodo": "test",
+      "titulo": "test",
+      "descripcion": "test",
+      "estado": "EN_CURSO",
+      "fecha_inicio": "2026-10-01",
+      "fecha_fin": "2026-10-31",
+      "id_instructor": 1
+    }
+  },
+  {
+    "model": "byteclass.seccion",
+    "pk": 1,
+    "fields": {
+      "titulo": "Unidad 1: Datos y funciones",
+      "orden": 1,
+      "descripcion": "En esta unidad conoceremos los tipos de datos en python y haremos funcionar nuestras primeras funciones en código, ejecutadas a través de la terminal.",
+      "visibilidad": true,
+      "id_curso": 1
+    }
+  },
+  {
+    "model": "byteclass.leccion",
+    "pk": 1,
+    "fields": {
+      "titulo": "Tipos de datos",
+      "orden": 1,
+      "contenido_texto": "En este PDF encontrarán los tipos de datos en python y tipos de operaciones",
+      "tipo": "ARCHIVO",
+      "url": null,
+      "archivo": "lecciones_archivos/Tipos_de_datos_y_operaciones.pdf",
+      "visibilidad": true,
+      "id_seccion": 1
+    }
+  },
+  {
+    "model": "byteclass.evaluacion",
+    "pk": 1,
+    "fields": {
+      "titulo": "Evaluación U1",
+      "descripcion": "Evaluación sobre la unidad numero 1",
+      "estado": "DISPONIBLE",
+      "visibilidad": true,
+      "fecha_inicio": "2026-10-01T21:00:00Z",
+      "fecha_limite": "2026-10-06T01:00:00Z",
+      "puntaje_maximo": "100.00",
+      "id_seccion": 1
+    }
+  },
+  {
+    "model": "byteclass.pregunta",
+    "pk": 1,
+    "fields": {
+      "enunciado": "¿Cuál es la salida devuelta por el intérprete?\r\n \r\n>>> type(\"100\")",
+      "tipo_pregunta": "MULTIPLE",
+      "puntaje": "10.00",
+      "id_evaluacion": 1
+    }
+  },
+  {
+    "model": "byteclass.pregunta",
+    "pk": 2,
+    "fields": {
+      "enunciado": "¿Cuál de las siguientes estructuras de datos es inmutable en Python?",
+      "tipo_pregunta": "MULTIPLE",
+      "puntaje": "10.00",
+      "id_evaluacion": 1
+    }
+  },
+  {
+    "model": "byteclass.pregunta",
+    "pk": 3,
+    "fields": {
+      "enunciado": "Si un usuario introduce 25 tras ejecutar esta instrucción en la consola:\r\n\r\nedad = input(\"Ingrese su edad: \")\r\n\r\n¿De qué tipo de dato es la variable edad si no se le aplica ninguna conversión previa?",
+      "tipo_pregunta": "MULTIPLE",
+      "puntaje": "10.00",
+      "id_evaluacion": 1
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 1,
+    "fields": {
+      "texto": "clase 'int'",
+      "es_correcta": false,
+      "id_pregunta": 1
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 2,
+    "fields": {
+      "texto": "clase 'number'",
+      "es_correcta": false,
+      "id_pregunta": 1
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 3,
+    "fields": {
+      "texto": "clase 'str'",
+      "es_correcta": true,
+      "id_pregunta": 1
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 4,
+    "fields": {
+      "texto": "clase 'char'",
+      "es_correcta": false,
+      "id_pregunta": 1
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 5,
+    "fields": {
+      "texto": "list (Lista)",
+      "es_correcta": false,
+      "id_pregunta": 2
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 6,
+    "fields": {
+      "texto": "dict (Diccionario)",
+      "es_correcta": false,
+      "id_pregunta": 2
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 7,
+    "fields": {
+      "texto": "tuple (Tupla)",
+      "es_correcta": true,
+      "id_pregunta": 2
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 8,
+    "fields": {
+      "texto": "set (Conjunto)",
+      "es_correcta": false,
+      "id_pregunta": 2
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 9,
+    "fields": {
+      "texto": "int",
+      "es_correcta": false,
+      "id_pregunta": 3
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 10,
+    "fields": {
+      "texto": "str",
+      "es_correcta": true,
+      "id_pregunta": 3
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 11,
+    "fields": {
+      "texto": "float",
+      "es_correcta": false,
+      "id_pregunta": 3
+    }
+  },
+  {
+    "model": "byteclass.opcion",
+    "pk": 12,
+    "fields": {
+      "texto": "bool",
+      "es_correcta": false,
+      "id_pregunta": 3
+    }
+  },
+  {
+    "model": "byteclass.matricula",
+    "pk": 1,
+    "fields": {
+      "estado": "ACTIVA",
+      "nota_final": null,
+      "fecha_inscripcion": "2026-10-05T05:53:41.859Z",
+      "id_curso": 1,
+      "id_estudiante": 2
+    }
+  },
+  {
+    "model": "byteclass.entregaevaluacion",
+    "pk": 1,
+    "fields": {
+      "estado_calificacion": "CORREGIDA_MANUAL",
+      "nota": "7.0",
+      "aprobado": true,
+      "fecha_entrega": "2026-10-05T05:56:40.011Z",
+      "numero_intento": 1,
+      "id_evaluacion": 1,
+      "id_matricula": 1
+    }
+  },
+  {
+    "model": "byteclass.respuestaestudiante",
+    "pk": 1,
+    "fields": {
+      "texto_abierto": "",
+      "retroalimentacion": "",
+      "puntaje_obtenido": "10.00",
+      "id_entrega_evaluacion": 1,
+      "id_opcion": 3,
+      "id_pregunta": 1
+    }
+  },
+  {
+    "model": "byteclass.respuestaestudiante",
+    "pk": 2,
+    "fields": {
+      "texto_abierto": "",
+      "retroalimentacion": "",
+      "puntaje_obtenido": "10.00",
+      "id_entrega_evaluacion": 1,
+      "id_opcion": 7,
+      "id_pregunta": 2
+    }
+  },
+  {
+    "model": "byteclass.respuestaestudiante",
+    "pk": 3,
+    "fields": {
+      "texto_abierto": "",
+      "retroalimentacion": "",
+      "puntaje_obtenido": "10.00",
+      "id_entrega_evaluacion": 1,
+      "id_opcion": 10,
+      "id_pregunta": 3
+    }
+  },
+  {
+    "model": "byteclass.progresoleccion",
+    "pk": 1,
+    "fields": {
+      "fecha_completado": "2026-10-05T05:59:10Z",
+      "completada": true,
+      "cantidad_accesos": 3,
+      "ultimo_acceso": "2026-10-05T05:59:19Z",
+      "id_leccion": 1,
+      "id_matricula": 1
+    }
+  },
+  {
+    "model": "byteclass.notificacion",
+    "pk": 1,
+    "fields": {
+      "titulo": "Realización de evaluación",
+      "mensaje": "Ya está habilitada la evaluación",
+      "fecha": "2026-10-05T05:53:23.063Z",
+      "leido": false,
+      "id_curso": 1,
+      "id_usuario_emisor": 1,
+      "id_usuario_receptor": 2
+    }
+  },
+  {
+    "model": "byteclass.historialconexion",
+    "pk": 1,
+    "fields": {
+      "fechahora_ingreso": "2026-10-05T05:58:46.129Z",
+      "fechahora_salida": "2026-10-05T13:00:00Z",
+      "id_usuario": 2
+    }
+  },
+  {
+    "model": "byteclass.registroauditoria",
+    "pk": 1,
+    "fields": {
+      "accion": "CAMBIO_ESTADO",
+      "tabla_afectada": "byteclass.evaluacion",
+      "id_registro_modificado": 1,
+      "estado_anterior": "{\"id\": null, \"titulo\": \"Evaluación U1\", \"descripcion\": \"Evaluación sobre la unidad numero 1\", \"estado\": \"BORRADOR\", \"orden\": 1, \"fecha_inicio\": \"2026-10-01 21:00:00.000000\", \"fecha_fin\": \"2026-10-06 01:00:00.000000\", \"puntaje_maximo\": 100.0, \"activo\": 1}",
+      "estado_nuevo": "{\"id\": null, \"titulo\": \"Evaluación U1\", \"descripcion\": \"Evaluación sobre la unidad numero 1\", \"estado\": \"DISPONIBLE\", \"orden\": 1, \"fecha_inicio\": \"2026-10-01 21:00:00.000000\", \"fecha_fin\": \"2026-10-06 01:00:00.000000\", \"puntaje_maximo\": 100.0, \"activo\": 1}",
+      "fecha_modificacion": "2026-10-05T06:02:54.515Z",
+      "id_usuario": 1
     }
   }
 ]

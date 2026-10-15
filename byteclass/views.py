@@ -169,17 +169,16 @@ def pagina_inicio(request):
     mensaje_bienvenida = request.session.get('mensaje_bienvenida')
     if 'mensaje_bienvenida' in request.session:
         del request.session['mensaje_bienvenida']
-
     cursos = Curso.objects.all()
-
     return render(request, 'byteclass/pagina_inicio.html', {
         'cursos': cursos,
         'message': mensaje_bienvenida,
     })
 
-def cerrar_sesion(request):
+def logout_view(request):
     logout(request)
-    return redirect('/')
+    # En este caso, decidí que vaya a la página de bienvenida
+    return redirect('bienvenida') 
 
 @login_required
 def detalle_curso(request, curso_id):
