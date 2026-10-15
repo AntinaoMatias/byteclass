@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - byteclass</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background-color: #111827;
+            padding: 1.1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .card-registro {
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 460px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: #0b0f19;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #38bdf8;
+        }
+
+        .helptext {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.4;
+            margin-top: 0.2rem;
+        }
+
+        .errorlist {
+            list-style: none;
+            color: #f87171;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .alert-error {
+            background-color: rgba(239, 68, 68, 0.15);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.92;
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .footer-link a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">byteclass</a>
+    </nav>
+
+    <main>
+        <div class="card-registro">
+            <h2>Crear Cuenta</h2>
+            <p class="subtitle">Regístrate para inscribirte y acceder a tus cursos.</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <div class="alert-error">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" action="{% url 'registro' %}">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <span class="helptext">{{ field.help_text|safe }}</span>
+                    {% endif %}
+                    {% if field.errors %}
+                        <ul class="errorlist">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="btn-submit">Registrarse</button>
+            </form>
+
+            <div class="footer-link">
+                ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

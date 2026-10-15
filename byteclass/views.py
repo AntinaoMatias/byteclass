@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 from rest_framework import viewsets
 from rest_framework.authentication import SessionAuthentication
@@ -147,7 +150,19 @@ def error_404(request, exception):
     return render(request, 'byteclass/404.html', status=404)
 
 def registro(request):
-    return render(request, 'byteclass/login.html')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registro Exitoso. ¡Bienvenido!")
+            return redirect('dashboard')
+        else:
+            messages.error(request, "No ha sido posible registrarte. Por favor revisa los errores indicados.")
+    else:
+        form = UserCreationForm()
+        
+    return render(request, 'registration/registro.html', {'form': form})
 
 @login_required
 def dashboard(request):
