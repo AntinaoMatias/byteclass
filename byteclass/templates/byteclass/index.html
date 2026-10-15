@@ -150,7 +150,7 @@
             <li><a href="/api/">API REST</a></li>
             <li><a href="/admin/">Admin</a></li>
             {% if request.user.is_authenticated %}
-            <li><a href="/dashboard/">Mis Cursos</a></li>
+            <li><a href="{% url 'pagina_inicio' %}">Mis Cursos</a></li>
             <li>
                 <form action="{% url 'logout' %}" method="post" style="display: inline; margin: 0;">
                     {% csrf_token %}
@@ -158,7 +158,7 @@
                 </form>
             </li>
             {% else %}
-            <li><a href="/dashboard/" class="btn-nav">Ingresar</a></li>
+            <li><a href="{% url 'pagina_inicio' %}" class="btn-nav">Ingresar</a></li>
             {% endif %}
         </ul>
     </nav>
@@ -167,8 +167,9 @@
         <div class="hero">
             <span class="tag">Backend Django & DRF</span>
             <h1>Aprende a tu ritmo con byteclass</h1>
-            <p>Accede a tus lecciones, revisa tus evaluaciones y sigue el progreso de tus cursos en una sola plataforma.</p>
-            <a href="/dashboard/" class="btn-comenzar">Comenzar ahora</a>
+            <p>Accede a tus lecciones, revisa tus evaluaciones y sigue el progreso de tus cursos en una sola plataforma.
+            </p>
+            <a href="{% url 'pagina_inicio' %}" class="btn-comenzar">Comenzar ahora</a>
         </div>
     </main>
 

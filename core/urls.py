@@ -33,6 +33,6 @@ path('admin/', admin.site.urls),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('registro/', views.registro, name='registro'),    
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('pagina_inicio/', views.pagina_inicio, name='pagina_inicio'),
     path('curso/<int:curso_id>/', views.detalle_curso, name='detalle_curso'),
 ]

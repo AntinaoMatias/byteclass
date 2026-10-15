@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -156,7 +155,7 @@ def registro(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registro Exitoso. ¡Bienvenido!")
-            return redirect('dashboard')
+            return redirect('pagina_inicio')
         else:
             messages.error(request, "No ha sido posible registrarte. Por favor revisa los errores indicados.")
     else:
@@ -165,9 +164,18 @@ def registro(request):
     return render(request, 'registration/registro.html', {'form': form})
 
 @login_required
-def dashboard(request):
+def pagina_inicio(request):
+    request.session['mensaje_bienvenida'] = f'¡Bienvenido a byteclass, {request.user.username}!'
+    mensaje_bienvenida = request.session.get('mensaje_bienvenida')
+    if 'mensaje_bienvenida' in request.session:
+        del request.session['mensaje_bienvenida']
+
     cursos = Curso.objects.all()
-    return render(request, 'byteclass/dashboard.html', {'cursos': cursos})
+
+    return render(request, 'byteclass/pagina_inicio.html', {
+        'cursos': cursos,
+        'message': mensaje_bienvenida,
+    })
 
 def cerrar_sesion(request):
     logout(request)
@@ -177,3 +185,4 @@ def cerrar_sesion(request):
 def detalle_curso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
     return render(request, 'byteclass/detalle_curso.html', {'curso': curso})
+
